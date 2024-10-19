@@ -1,0 +1,58 @@
+server:
+  port: 8080
+
+spring:
+  profiles:
+    active: dev
+  main:
+    allow-circular-references: true
+  datasource:
+    druid:
+      driver-class-name: ${xd.datasource.driver-class-name}
+      url: jdbc:mysql://${xd.datasource.host}:${xd.datasource.port}/${xd.datasource.database}?serverTimezone=Asia/Shanghai&useUnicode=true&characterEncoding=utf-8&zeroDateTimeBehavior=convertToNull&useSSL=false&allowPublicKeyRetrieval=true
+      username: ${xd.datasource.username}
+      password: ${xd.datasource.password}
+  redis:
+    host: ${xd.redis.host}
+    port: ${xd.redis.port}
+    password: ${xd.redis.password}
+    database: ${xd.redis.database}
+
+mybatis:
+  #mapper配置文件
+  mapper-locations: classpath:mapper/*.xml
+  type-aliases-package: com.xd.entity # 为了在 Mapper 对应的 XML 文件中可以直接使用类名，而不用使用全限定的类名（在 XML 中调用的时候不用包含包名）
+  configuration:
+    #开启驼峰命名
+    map-underscore-to-camel-case: true
+
+logging:
+  level:
+    com:
+      xd:
+        mapper: debug
+        service: info
+        controller: info
+
+xd:
+  jwt:
+    # 设置jwt签名加密时使用的秘钥
+    admin-secret-key: xd_university
+    # 设置jwt过期时间
+    admin-ttl: 7200000
+    # 设置前端传递过来的令牌名称
+    admin-token-name: token
+    # 设置jwt签名加密时使用的秘钥
+    user-secret-key: xd_university
+    # 设置jwt过期时间
+    user-ttl: 7200000
+    # 设置前端传递过来的令牌名称
+    user-token-name: authentication
+  alioss:
+    access-key-id: ${xd.alioss.access-key-id}
+    access-key-secret: ${xd.alioss.access-key-secret}
+    bucket-name: ${xd.alioss.bucket-name}
+    endpoint: ${xd.alioss.endpoint}
+  wechat:
+    appid: ${xd.wechat.appid}
+    secret: ${xd.wechat.secret}

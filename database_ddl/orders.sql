@@ -1,0 +1,28 @@
+DROP TABLE IF EXISTS `orders`;
+CREATE TABLE `orders` (
+  `id` bigint NOT NULL AUTO_INCREMENT COMMENT '主键',
+  `number` varchar(50) COLLATE utf8_bin DEFAULT NULL COMMENT '订单号',
+  `status` int NOT NULL DEFAULT '1' COMMENT '订单状态 1待付款 2待接单 3已接单 4派送中 5已完成 6已取消 7退款',
+  `user_id` bigint NOT NULL COMMENT '下单用户',
+  `address_book_id` bigint NOT NULL COMMENT '地址id',
+  `order_time` datetime NOT NULL COMMENT '下单时间',
+  `checkout_time` datetime DEFAULT NULL COMMENT '结账时间',
+  `pay_method` int NOT NULL DEFAULT '1' COMMENT '支付方式 1微信,2支付宝',
+  `pay_status` tinyint NOT NULL DEFAULT '0' COMMENT '支付状态 0未支付 1已支付 2退款',
+  `amount` decimal(10,2) NOT NULL COMMENT '实收金额',
+  `remark` varchar(100) COLLATE utf8_bin DEFAULT NULL COMMENT '备注',
+  `phone` varchar(11) COLLATE utf8_bin DEFAULT NULL COMMENT '手机号',
+  `address` varchar(255) COLLATE utf8_bin DEFAULT NULL COMMENT '地址',
+  `user_name` varchar(32) COLLATE utf8_bin DEFAULT NULL COMMENT '用户名称',
+  `consignee` varchar(32) COLLATE utf8_bin DEFAULT NULL COMMENT '收货人',
+  `cancel_reason` varchar(255) COLLATE utf8_bin DEFAULT NULL COMMENT '订单取消原因',
+  `rejection_reason` varchar(255) COLLATE utf8_bin DEFAULT NULL COMMENT '订单拒绝原因',
+  `cancel_time` datetime DEFAULT NULL COMMENT '订单取消时间',
+  `estimated_delivery_time` datetime DEFAULT NULL COMMENT '预计送达时间',
+  `delivery_status` tinyint(1) NOT NULL DEFAULT '1' COMMENT '配送状态  1立即送出  0选择具体时间',
+  `delivery_time` datetime DEFAULT NULL COMMENT '送达时间',
+  `pack_amount` int DEFAULT NULL COMMENT '打包费',
+  `tableware_number` int DEFAULT NULL COMMENT '餐具数量',
+  `tableware_status` tinyint(1) NOT NULL DEFAULT '1' COMMENT '餐具数量状态  1按餐量提供  0选择具体数量',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb3 COLLATE=utf8_bin COMMENT='订单表';
