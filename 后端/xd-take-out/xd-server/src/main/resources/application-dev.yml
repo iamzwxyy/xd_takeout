@@ -8,8 +8,8 @@ xd:
     password: 1234
   alioss:
     endpoint: oss-cn-beijing.aliyuncs.com
-    access-key-id: LTAI5tEqs9JQhXHfT3W46BYz
-    access-key-secret: Vk73Ggp098Kw9NqT9qvfKBhUr7VtGR
+    access-key-id: #由于隐私问题，不展示
+    access-key-secret: #由于隐私问题，不展示
     bucket-name: sky-take-out-iamzwxyy
   redis:
     host: localhost
@@ -17,5 +17,5 @@ xd:
     password: 1234
     database: 10
   wechat:
-    appid: wx11617ccaf8f07796
-    secret: 787ba64584287ffc7dadb5943686000d
+    appid: #由于隐私问题，不展示
+    secret: #由于隐私问题，不展示
